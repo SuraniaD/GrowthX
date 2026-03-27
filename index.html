@@ -463,6 +463,65 @@
     transform: rotate(-90deg) scale(1.2);
   }
 
+  /* ── EARLY ACCESS ── */
+  .early-access-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .early-card {
+    border: 1px solid var(--accent);
+    background: rgba(0,196,255,0.04);
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+  .early-badge {
+    position: absolute; top: -1px; left: 1.5rem;
+    background: var(--accent); color: var(--deep);
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+  }
+  .early-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem; line-height: 1;
+    color: var(--white); margin-top: 0.5rem;
+  }
+  .early-per {
+    font-size: 0.8rem; color: var(--accent);
+    letter-spacing: 0.06em; margin-bottom: 1.5rem;
+  }
+  .early-perks { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .early-perks li {
+    font-size: 0.88rem; color: rgba(200,232,245,0.75);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .early-perks li::before { content: '—'; color: var(--accent); font-size: 0.7rem; }
+
+  .early-context { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 0.5rem; }
+  .early-context-block { }
+  .early-context-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem; line-height: 1;
+    color: var(--accent);
+  }
+  .early-context-label {
+    font-size: 0.82rem; color: rgba(200,232,245,0.6);
+    margin-top: 0.3rem; line-height: 1.5;
+  }
+  .early-divider { height: 1px; background: rgba(0,196,255,0.12); }
+  .early-context-text {
+    font-size: 0.95rem; line-height: 1.75;
+    color: rgba(200,232,245,0.7);
+  }
+
+  @media (max-width: 767px) {
+    .early-access-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .early-price { font-size: 4rem; }
+  }
+
   /* ── BOOKING SECTION ── */
   .booking-section {
     background: linear-gradient(160deg, #021b2e 0%, #0a3a52 60%, #021b2e 100%);
@@ -987,53 +1046,50 @@
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- EARLY ACCESS -->
 <section class="pricing" id="pricing">
   <div class="container">
-    <p class="section-label">Membership</p>
-    <h2>SIMPLE<br>PRICING</h2>
-    <div class="pricing-grid">
-      <div class="plan">
-        <div class="plan-name">Drop-In</div>
-        <div class="plan-price">$29</div>
-        <div class="plan-per">per session</div>
+    <p class="section-label">Limited Early Access</p>
+    <h2>ONE PRICE.<br>ONE SPOT.</h2>
+
+    <div class="early-access-wrap">
+
+      <!-- Left: price card -->
+      <div class="early-card">
+        <div class="early-badge">Founding Member Rate</div>
+        <div class="early-price">₹499</div>
+        <div class="early-per">per session · locked in forever</div>
         <div class="plan-divider"></div>
-        <ul>
-          <li>Single cold plunge session</li>
-          <li>Up to 15 minutes</li>
-          <li>Towel provided</li>
-          <li>Guided breathing intro</li>
+        <ul class="early-perks">
+          <li>Access before public launch</li>
+          <li>Rate never increases for you</li>
+          <li>Guided breathing session included</li>
+          <li>Towel &amp; robe provided</li>
+          <li>Priority slot booking</li>
+          <li>Direct WhatsApp support</li>
         </ul>
-        <a href="javascript:void(0)" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})" class="btn-ghost">Book Now</a>
+        <button onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})" class="btn-primary" style="width:100%;margin-top:2rem;border:none;cursor:pointer;">
+          Join the Waitlist →
+        </button>
       </div>
-      <div class="plan featured">
-        <div class="plan-badge">Most Popular</div>
-        <div class="plan-name">Monthly</div>
-        <div class="plan-price">$79</div>
-        <div class="plan-per">per month · unlimited sessions</div>
-        <div class="plan-divider"></div>
-        <ul>
-          <li>Unlimited cold plunges</li>
-          <li>Priority booking</li>
-          <li>Towel & robe included</li>
-          <li>Progress tracking app</li>
-          <li>Monthly protocol review</li>
-        </ul>
-        <a href="javascript:void(0)" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})" class="btn-primary">Get Started</a>
+
+      <!-- Right: urgency + context -->
+      <div class="early-context">
+        <div class="early-context-block">
+          <div class="early-context-num">50</div>
+          <div class="early-context-label">Founding member spots available</div>
+        </div>
+        <div class="early-divider"></div>
+        <p class="early-context-text">
+          We're launching CRYO in Bengaluru and want to build with our first members — not for them. Join the waitlist at ₹499/session and lock in the founding rate before we open to the public.
+        </p>
+        <div class="early-divider"></div>
+        <div class="early-context-block">
+          <div class="early-context-num" style="color:var(--frost)">No payment now.</div>
+          <div class="early-context-label">Just your name and number. We'll reach out when we're ready to open.</div>
+        </div>
       </div>
-      <div class="plan">
-        <div class="plan-name">10-Pack</div>
-        <div class="plan-price">$199</div>
-        <div class="plan-per">10 sessions · save $91</div>
-        <div class="plan-divider"></div>
-        <ul>
-          <li>10 cold plunge sessions</li>
-          <li>Valid for 6 months</li>
-          <li>Towel provided</li>
-          <li>Shareable with a friend</li>
-        </ul>
-        <a href="javascript:void(0)" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})" class="btn-ghost">Buy Pack</a>
-      </div>
+
     </div>
   </div>
 </section>
@@ -1045,24 +1101,24 @@
 
       <!-- LEFT: headline + perks -->
       <div class="booking-left">
-        <p class="section-label">Book a Session</p>
-        <h2>YOUR FIRST<br>PLUNGE IS<br><span class="free-text">FREE</span></h2>
-        <p class="booking-sub">No experience needed. Show up, we handle the rest. Fill in your details and we'll confirm within 2 hours.</p>
+        <p class="section-label">Join the Waitlist</p>
+        <h2>SECURE YOUR<br>FOUNDING<br><span class="free-text">SPOT</span></h2>
+        <p class="booking-sub">Only 50 founding member spots at ₹499/session. Drop your details and we'll reach out the moment we're ready to open.</p>
         <ul class="booking-perks">
-          <li><span class="perk-icon">❄️</span> Guided breathing walkthrough included</li>
-          <li><span class="perk-icon">🕐</span> Sessions available 6am – 9pm daily</li>
+          <li><span class="perk-icon">❄️</span> Rate locked in forever at ₹499</li>
+          <li><span class="perk-icon">🕐</span> No payment required now</li>
           <li><span class="perk-icon">📍</span> Bengaluru · Indiranagar &amp; Koramangala</li>
-          <li><span class="perk-icon">✅</span> Confirmation via WhatsApp within 2 hrs</li>
+          <li><span class="perk-icon">✅</span> We'll WhatsApp you before anyone else</li>
         </ul>
       </div>
 
-      <!-- RIGHT: booking form -->
+      <!-- RIGHT: waitlist form -->
       <div class="booking-right">
         <div class="form-card" id="bookingForm">
 
           <!-- Step 1: Personal details -->
           <div class="form-step active" id="step1">
-            <div class="form-step-label">Step 1 of 3 &mdash; Your Details</div>
+            <div class="form-step-label">Step 1 of 2 &mdash; Your Details</div>
             <div class="form-row">
               <div class="form-group">
                 <label>First Name</label>
@@ -1081,97 +1137,60 @@
               <label>WhatsApp Number</label>
               <input type="tel" id="phone" placeholder="+91 98765 43210" />
             </div>
-            <button class="btn-primary form-btn" onclick="goStep(2)">Continue →</button>
+            <button class="btn-primary form-btn" style="border:none;cursor:pointer;" onclick="goStep(2)">Continue →</button>
           </div>
 
-          <!-- Step 2: Session preferences -->
+          <!-- Step 2: One qualifying question -->
           <div class="form-step" id="step2">
-            <div class="form-step-label">Step 2 of 3 &mdash; Your Session</div>
+            <div class="form-step-label">Step 2 of 2 &mdash; One Quick Question</div>
             <div class="form-group">
-              <label>Preferred Location</label>
+              <label>Which area of Bengaluru are you in?</label>
               <div class="select-wrap">
                 <select id="location">
-                  <option value="">Select a location</option>
+                  <option value="">Select your area</option>
                   <option>Indiranagar</option>
                   <option>Koramangala</option>
-                  <option>Whitefield (Coming Soon)</option>
+                  <option>HSR Layout</option>
+                  <option>Whitefield</option>
+                  <option>Jayanagar</option>
+                  <option>Marathahalli</option>
+                  <option>Other</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <label>Preferred Date</label>
-              <input type="date" id="sessionDate" />
-            </div>
-            <div class="form-group">
-              <label>Preferred Time Slot</label>
-              <div class="time-slots" id="timeSlots">
-                <div class="slot" onclick="selectSlot(this)">6:00 AM</div>
-                <div class="slot" onclick="selectSlot(this)">7:30 AM</div>
-                <div class="slot" onclick="selectSlot(this)">9:00 AM</div>
-                <div class="slot" onclick="selectSlot(this)">11:00 AM</div>
-                <div class="slot" onclick="selectSlot(this)">1:00 PM</div>
-                <div class="slot" onclick="selectSlot(this)">3:00 PM</div>
-                <div class="slot" onclick="selectSlot(this)">5:30 PM</div>
-                <div class="slot" onclick="selectSlot(this)">7:00 PM</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Session Type</label>
+              <label>How often do you work out?</label>
               <div class="select-wrap">
                 <select id="sessionType">
-                  <option value="free">First Session — Free</option>
-                  <option>Drop-In — ₹999</option>
-                  <option>10-Pack — ₹6,999</option>
-                  <option>Monthly Unlimited — ₹2,999/mo</option>
+                  <option value="">Select frequency</option>
+                  <option>Daily</option>
+                  <option>4–5 times a week</option>
+                  <option>2–3 times a week</option>
+                  <option>Once a week</option>
+                  <option>Occasionally</option>
                 </select>
               </div>
             </div>
-            <div class="form-btn-row">
-              <button class="btn-ghost form-btn-sm" onclick="goStep(1)">← Back</button>
-              <button class="btn-primary form-btn" onclick="goStep(3)">Continue →</button>
-            </div>
-          </div>
-
-          <!-- Step 3: Health check + confirm -->
-          <div class="form-step" id="step3">
-            <div class="form-step-label">Step 3 of 3 &mdash; Quick Health Check</div>
-            <p class="health-note">Cold plunge is generally safe, but we want to make sure you have a great experience.</p>
-            <div class="check-group">
-              <label class="check-item">
-                <input type="checkbox" id="c1" />
-                <span>I do not have a known heart condition or high blood pressure</span>
-              </label>
-              <label class="check-item">
-                <input type="checkbox" id="c2" />
-                <span>I am not pregnant</span>
-              </label>
-              <label class="check-item">
-                <input type="checkbox" id="c3" />
-                <span>I understand cold plunge involves physical discomfort</span>
-              </label>
-              <label class="check-item">
-                <input type="checkbox" id="c4" />
-                <span>I agree to the cancellation policy (24hr notice required)</span>
-              </label>
-            </div>
-            <div class="form-group" style="margin-top:1.2rem">
-              <label>Anything we should know? (optional)</label>
-              <textarea id="notes" placeholder="Injuries, medical notes, questions..." rows="3"></textarea>
+            <div class="form-group">
+              <label>Anything you'd like us to know? (optional)</label>
+              <textarea id="notes" placeholder="Goals, injuries, questions about cold plunge..." rows="3"></textarea>
             </div>
             <div class="form-btn-row">
-              <button class="btn-ghost form-btn-sm" onclick="goStep(2)">← Back</button>
-              <button class="btn-primary form-btn" onclick="submitBooking()">Confirm Booking ❄️</button>
+              <button class="btn-ghost form-btn-sm" style="border:1px solid rgba(111,184,216,0.4);cursor:pointer;background:transparent;" onclick="goStep(1)">← Back</button>
+              <button class="btn-primary form-btn" style="border:none;cursor:pointer;" onclick="submitBooking()">Join Waitlist ❄️</button>
             </div>
           </div>
 
           <!-- Success state -->
           <div class="form-step" id="stepSuccess">
             <div class="success-icon">❄️</div>
-            <h3 class="success-title">YOU'RE BOOKED.</h3>
-            <p class="success-msg">We'll send a WhatsApp confirmation within 2 hours. See you in the water.</p>
+            <h3 class="success-title">YOU'RE IN.</h3>
+            <p class="success-msg">You've secured your founding member spot at ₹499/session. We'll WhatsApp you the moment we're ready to open.</p>
             <div class="booking-summary" id="bookingSummary"></div>
-            <a href="#" class="btn-ghost" style="margin-top:1.5rem;display:inline-block" onclick="resetForm()">Book Another Session</a>
+            <button class="btn-ghost" style="margin-top:1.5rem;border:1px solid rgba(111,184,216,0.4);cursor:pointer;background:transparent;" onclick="resetForm()">Add Another Person</button>
           </div>
+
+
 
         </div>
 
@@ -1249,14 +1268,9 @@
       const ph = document.getElementById('phone').value.trim();
       if (!fn || !em || !ph) { shakeForm(); return; }
     }
-    if (n === 3) {
-      const loc  = document.getElementById('location').value;
-      const date = document.getElementById('sessionDate').value;
-      if (!loc || !date || !selectedSlot) { shakeForm(); return; }
-    }
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
     document.getElementById('step' + n).classList.add('active');
-    const pct = { 1: '33%', 2: '66%', 3: '99%' };
+    const pct = { 1: '50%', 2: '99%' };
     document.getElementById('progressBar').style.width = pct[n] || '0%';
   }
 
@@ -1267,31 +1281,27 @@
   }
 
   async function submitBooking() {
-    const checks = ['c1','c2','c3','c4'];
-    const allChecked = checks.every(id => document.getElementById(id).checked);
-    if (!allChecked) { shakeForm(); return; }
+    const loc  = document.getElementById('location').value;
+    if (!loc) { shakeForm(); return; }
 
-    // Collect form data
     const booking = {
       first_name:   document.getElementById('firstName').value.trim(),
       last_name:    document.getElementById('lastName').value.trim(),
       email:        document.getElementById('email').value.trim(),
       phone:        document.getElementById('phone').value.trim(),
-      location:     document.getElementById('location').value,
-      session_date: document.getElementById('sessionDate').value,
-      time_slot:    selectedSlot,
+      location:     loc,
+      session_date: null,
+      time_slot:    '',
       session_type: document.getElementById('sessionType').value,
       notes:        document.getElementById('notes').value.trim()
     };
 
-    // Show loading state on button
-    const btn = document.querySelector('#step3 .btn-primary');
+    const btn = document.querySelector('#step2 .btn-primary');
     const original = btn.textContent;
     btn.textContent = 'Saving...';
     btn.disabled = true;
     btn.style.opacity = '0.6';
 
-    // Insert into Supabase
     const { error } = await dbClient.from('bookings').insert([booking]);
 
     if (error) {
@@ -1306,20 +1316,16 @@
       return;
     }
 
-    // Success
     document.getElementById('bookingSummary').innerHTML = `
       <strong>Name:</strong> ${booking.first_name} ${booking.last_name}<br>
-      <strong>Location:</strong> ${booking.location}<br>
-      <strong>Date:</strong> ${booking.session_date}<br>
-      <strong>Time:</strong> ${booking.time_slot}<br>
-      <strong>Session:</strong> ${booking.session_type}
+      <strong>Area:</strong> ${booking.location}<br>
+      <strong>WhatsApp:</strong> ${booking.phone}
     `;
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
     document.getElementById('stepSuccess').classList.add('active');
     document.getElementById('progressBar').style.width = '100%';
     document.getElementById('progressBar').style.background = '#00ff88';
 
-    // Reset button for next time
     btn.textContent = original;
     btn.disabled = false;
     btn.style.opacity = '1';
@@ -1332,11 +1338,12 @@
     document.getElementById('progressBar').style.width = '0%';
     document.getElementById('progressBar').style.background = 'var(--accent)';
     selectedSlot = '';
-    ['firstName','lastName','email','phone','sessionDate','notes'].forEach(id => {
+    ['firstName','lastName','email','phone','notes'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
-    ['c1','c2','c3','c4'].forEach(id => { document.getElementById(id).checked = false; });
-    document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+    ['location','sessionType'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.selectedIndex = 0;
+    });
     return false;
   }
 
