@@ -246,7 +246,85 @@
   .benefit-text { font-size: 0.9rem; line-height: 1.7; color: rgba(200,232,245,0.65); }
   .benefit-stat { margin-top: 1rem; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em; }
 
-  /* ── ATHLETE SECTION ── */
+  /* ── EXPERTS GRID ── */
+  .expert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .expert-card {
+    background: rgba(10,58,82,0.4);
+    border: 1px solid rgba(0,196,255,0.1);
+    padding: 2rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: border-color .3s, background .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .expert-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, rgba(0,196,255,0.4), transparent);
+    transform: scaleX(0); transition: transform .4s;
+  }
+  .expert-card:hover { border-color: rgba(0,196,255,0.35); background: rgba(10,58,82,0.7); }
+  .expert-card:hover::before { transform: scaleX(1); }
+  .expert-card.featured-expert {
+    grid-column: span 2;
+    border-color: rgba(0,196,255,0.3);
+    background: rgba(0,196,255,0.05);
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .expert-card.featured-expert::before { transform: scaleX(1); }
+  .expert-card.featured-expert .expert-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .expert-icon { font-size: 1.8rem; }
+  .expert-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+  .featured-expert .expert-name { font-size: 1.8rem; color: var(--accent); }
+  .expert-title {
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .expert-quote {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(200,232,245,0.7);
+    border-left: 2px solid rgba(0,196,255,0.3);
+    padding-left: 1rem;
+    margin: 0.4rem 0;
+    font-style: italic;
+  }
+  .featured-expert .expert-quote {
+    font-size: 1rem;
+    border-left: 3px solid var(--accent);
+    color: rgba(200,232,245,0.85);
+  }
+  .expert-protocol {
+    font-size: 0.72rem;
+    color: rgba(111,184,216,0.5);
+    letter-spacing: 0.05em;
+    margin-top: 0.3rem;
+  }
+
+  @media (max-width: 767px) {
+    .expert-grid { grid-template-columns: 1fr; }
+    .expert-card.featured-expert { grid-column: span 1; flex-direction: column; }
+  }
+
+  /* ── ATHLETE SECTION (keep for responsive refs) ── */
   .athletes {
     background: linear-gradient(135deg, #021b2e 0%, #0a3a52 100%);
     position: relative;
@@ -910,67 +988,59 @@
   </div>
 </section>
 
-<!-- ATHLETES -->
+<!-- EXPERTS -->
 <section class="athletes" id="athletes">
   <div class="container">
     <div class="athlete-header">
       <div>
-        <p class="section-label">Who Uses Cold Plunge</p>
-        <h2>TRUSTED BY<br>THE ELITE</h2>
+        <p class="section-label">Who Endorses Cold Plunge</p>
+        <h2>TRUSTED BY<br>NEUROSCIENTISTS<br>& EXPERTS</h2>
       </div>
-      <p class="athlete-intro">From NFL locker rooms to Olympic training centers, cold water immersion is the recovery tool of choice for the world's top athletes — and now it's available to everyone.</p>
+      <p class="athlete-intro">The world's leading neuroscientists, longevity researchers, and performance experts don't just study cold therapy — they practice it daily and prescribe it to others.</p>
     </div>
-    <div class="photo-grid">
-      <div class="photo-card tall">
-        <div class="img-placeholder">
-          <div class="big-icon">🏊</div>
-          <div class="ph-label">Elite Swimmer · Cold Plunge Session</div>
-        </div>
-        <div class="photo-overlay">
-          <div class="photo-name">POST-RACE RECOVERY</div>
-          <div class="photo-desc">Olympic Swim Team Protocol</div>
-        </div>
+
+    <div class="expert-grid">
+
+      <div class="expert-card featured-expert">
+        <div class="expert-icon">🧠</div>
+        <div class="expert-name">Dr. Andrew Huberman</div>
+        <div class="expert-title">Professor of Neurobiology · Stanford University</div>
+        <blockquote class="expert-quote">"Deliberate cold exposure causes a significant increase in dopamine and norepinephrine that can last for hours. It's one of the most powerful tools for mental performance available."</blockquote>
+        <div class="expert-protocol">Protocol: 11 min/week total · 50–60°F · No heating after</div>
       </div>
-      <div class="photo-card">
-        <div class="img-placeholder">
-          <div class="big-icon">🏈</div>
-          <div class="ph-label">NFL Athlete · Ice Bath</div>
-        </div>
-        <div class="photo-overlay">
-          <div class="photo-name">IN-SEASON PROTOCOL</div>
-          <div class="photo-desc">NFL Recovery Regimen</div>
-        </div>
+
+      <div class="expert-card">
+        <div class="expert-icon">🔬</div>
+        <div class="expert-name">Dr. Susanna Søberg</div>
+        <div class="expert-title">PhD Researcher · University of Copenhagen</div>
+        <blockquote class="expert-quote">"Cold water immersion activates brown adipose tissue and dramatically increases norepinephrine. The metabolic and psychological effects are measurable and lasting."</blockquote>
+        <div class="expert-protocol">Research: Søberg Protocol · 11 min cold/week minimum</div>
       </div>
-      <div class="photo-card">
-        <div class="img-placeholder">
-          <div class="big-icon">🚵</div>
-          <div class="ph-label">Endurance Athlete · Cold Therapy</div>
-        </div>
-        <div class="photo-overlay">
-          <div class="photo-name">ENDURANCE EDGE</div>
-          <div class="photo-desc">Tour De France Recovery</div>
-        </div>
+
+      <div class="expert-card">
+        <div class="expert-icon">💪</div>
+        <div class="expert-name">Wim Hof</div>
+        <div class="expert-title">Extreme Athlete & Cold Therapy Pioneer</div>
+        <blockquote class="expert-quote">"The cold is a noble force. It teaches you to be present, to control your body and your mind. Science is now catching up to what the body already knows."</blockquote>
+        <div class="expert-protocol">Method: Breathwork + cold immersion daily practice</div>
       </div>
-      <div class="photo-card">
-        <div class="img-placeholder">
-          <div class="big-icon">🥊</div>
-          <div class="ph-label">Combat Sport Athlete</div>
-        </div>
-        <div class="photo-overlay">
-          <div class="photo-name">FIGHT CAMP</div>
-          <div class="photo-desc">MMA Training Recovery</div>
-        </div>
+
+      <div class="expert-card">
+        <div class="expert-icon">🩺</div>
+        <div class="expert-name">Dr. Rhonda Patrick</div>
+        <div class="expert-title">PhD Biomedical Science · FoundMyFitness</div>
+        <blockquote class="expert-quote">"Cold water immersion increases norepinephrine by up to 300% and activates a dynorphin response that sensitises you to euphoria over time. The data on recovery and mood is compelling."</blockquote>
+        <div class="expert-protocol">Advocates: Post-workout cold immersion for muscle recovery</div>
       </div>
-      <div class="photo-card">
-        <div class="img-placeholder">
-          <div class="big-icon">🏃</div>
-          <div class="ph-label">Marathon Runner · Cold Immersion</div>
-        </div>
-        <div class="photo-overlay">
-          <div class="photo-name">MILE AFTER MILE</div>
-          <div class="photo-desc">Marathon Runner Protocol</div>
-        </div>
+
+      <div class="expert-card">
+        <div class="expert-icon">⚡</div>
+        <div class="expert-name">Dr. Peter Attia</div>
+        <div class="expert-title">MD · Longevity & Performance Medicine</div>
+        <blockquote class="expert-quote">"Cold exposure is one of the few interventions with robust data showing benefits across metabolic health, inflammation reduction, and psychological resilience simultaneously."</blockquote>
+        <div class="expert-protocol">Uses: Cold plunge as part of Zone 2 + recovery stack</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1148,15 +1218,15 @@
               <div class="select-wrap">
                 <select id="location">
                   <option value="">Select your area</option>
-                  <option>Randesan</option>
-                  <option>Sector 1 - 7</option>
-                  <option>Sector 8 - 14</option>
-                  <option>Sector 15 - 21</option>
-                  <option>Sector 22 - 28</option>
-                  <option>Infocity / Gift City</option>
-                  <option>Kudasan</option>
-                  <option>Sargasan</option>
-                  <option>Other</option>
+                  <option value="Randesan">Randesan</option>
+                  <option value="" disabled>Sector 1 - 7 (Coming Soon)</option>
+                  <option value="" disabled>Sector 8 - 14 (Coming Soon)</option>
+                  <option value="" disabled>Sector 15 - 21 (Coming Soon)</option>
+                  <option value="" disabled>Sector 22 - 28 (Coming Soon)</option>
+                  <option value="" disabled>Infocity / Gift City (Coming Soon)</option>
+                  <option value="" disabled>Kudasan (Coming Soon)</option>
+                  <option value="" disabled>Sargasan (Coming Soon)</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
